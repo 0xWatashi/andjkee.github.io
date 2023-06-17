@@ -31,11 +31,13 @@
                     fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
-                    .then(resp.data.items.forEach(transaction => {
+                    response = resp.json()
+                    console.log(response)
+                    response.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
                         }
-                    }))
+                    })
                 }
                 alert(`Всего свапов: ${totalSwaps}`)
             }
