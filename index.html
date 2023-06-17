@@ -1,9 +1,29 @@
 <html>
     <body>
-        <div style="text-align: center; height: 300;">
+        <div style="text-align: center; height: 150; font-size: 50px;">
             Сюда ебани адресочек и узнаешь, сколько свапов в метамаске сделал)))
-            <input style="height: 30; width: 100">
         </div> 
+        <div style="text-align: center; height: 50;">
+            <input style="height: 30; width: 400" id="address">
+        </div>
+        <div style=" text-align: center;">
+            <button style="height: 30; width: 100;" onclick="checkSwaps()">ну и скока?</button>
+        </div>
     </body>
-    
+    <script>
+        function checkSwaps() {
+            let address = document.getElementById("address").value;
+            let headers = new Headers();
+            headers.set('Authorization', "Bearer cqt_rQJBM6C7TmcMmYWFxXjrRfHyfytV")
+            if (address == "" || undefined ) {
+                alert("Долбаеб, введи адрес")
+            } else {
+                fetch(`https://api.covalenthq.com/v1/eth-mainnet/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                .then((resp) => resp.json())
+                .then((data) => console.log(data));
+            }
+            
+        }
+    </script>
+
 </html>
