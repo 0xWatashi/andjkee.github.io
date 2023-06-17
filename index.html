@@ -38,12 +38,9 @@
                     })
                     await console.log(data1)
                     await data1.data.items.forEach(transaction => {
-                        console.log(`to_address ${transaction.to_address}`)
-                        console.log(`contract ${networks[i].contract}`)
                         if (transaction.to_address == networks[i].contract) {
                             console.log(`contract ${networks[i].contract}`)
                             totalSwaps = totalSwaps + 1;
-                            console.log(totalSwaps)
                         }
                     })
                 }
