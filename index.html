@@ -11,18 +11,34 @@
         </div>
     </body>
     <script>
-        function checkSwaps() {
+        //let networks = ["bsc-mainnet", "matic-mainnet", "arbitrum-mainnet", "avalanche-mainnet", "optimism-mainnet"]
+        let bscAvaxMatic = "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"
+        let arbiOP = "0x9dDA6Ef3D919c9bC8885D5560999A3640431e8e6"
+        let networks = [
+            {network: "bsc-mainnet", contract: "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"},
+            {network: "matic-mainnet", contract: "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"},
+            {network: "arbitrum-mainnet", contract: "0x9dDA6Ef3D919c9bC8885D5560999A3640431e8e6"},
+            {network: "avalanche-mainnet", contract: "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"},
+            {network: "optimism-mainnet", contract: "0x9dDA6Ef3D919c9bC8885D5560999A3640431e8e6"}
+        ]
+
+        async function checkSwaps() {
+            let totalSwaps = 0;
             let address = document.getElementById("address").value;
             let headers = new Headers();
             headers.set('Authorization', "Bearer cqt_rQJBM6C7TmcMmYWFxXjrRfHyfytV")
             if (address == "" || undefined ) {
                 alert("Долбаеб, введи адрес")
             } else {
-                fetch(`https://api.covalenthq.com/v1/eth-mainnet/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
-                .then((resp) => resp.json())
-                .then((data) => console.log(data));
+                for (let i = 0; i <= 4; i++) {
+                    fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    .then((resp) => resp.json())
+                    .then((data) => console.log(data))
+                    // .then(data.forEach(transaction => {
+                        
+                    // }))
+                }
             }
-            
         }
     </script>
 
