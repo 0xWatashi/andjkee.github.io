@@ -28,12 +28,15 @@
                 alert("Долбаеб, введи адрес")
             } else {
                 for (let i = 0; i <= 4; i++) {
+                    let data1
                     await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((res) => {
                         return res.json()
                     })
                     .then((data) => {
-                        data.data.items.forEach(transaction => {
+                        data1 = data
+                    })
+                    data1.data.items.forEach(transaction => {
                         console.log(`to_address ${transaction.to_address}`)
                         if (transaction.to_address == networks[i].contract) {
                             console.log(`contract ${networks[i].contract}`)
@@ -41,8 +44,6 @@
                             console.log(totalSwaps)
                         }
                     })
-                    })
-                    
                 }
                 await alert(`Всего свапов: ${totalSwaps}`)
             }
