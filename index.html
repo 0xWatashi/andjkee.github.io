@@ -29,7 +29,7 @@
                 alert("Долбаеб, введи адрес")
             } else {
                 for (let i = 0; i <= 4; i++) {
-                    fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
                     .then((data) => {let response = data})
