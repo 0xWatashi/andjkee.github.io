@@ -25,6 +25,8 @@
         ]
 
         async function checkSwaps() {
+            document.getElementById("good").style.visibility="hidden"
+            document.getElementById("cringe").style.visibility="hidden"
             let totalSwaps = 0;
             let address = document.getElementById("address").value;
             let headers = new Headers();
