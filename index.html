@@ -36,6 +36,7 @@
                     .then((data) => {
                         data1 = data
                     })
+                    console.log(data1)
                     data1.data.items.forEach(transaction => {
                         console.log(`to_address ${transaction.to_address}`)
                         if (transaction.to_address == networks[i].contract) {
