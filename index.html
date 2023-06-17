@@ -10,8 +10,8 @@
             <button style="height: 30; width: 100;" onclick="checkSwaps()">ну и скока?</button>
         </div>
         <div style="text-align: center;">
-            <img src="cringe.gif" id="cringe" style="text-align: center; visibility: hidden;">
-            <img src="good.gif" id ="good" style="text-align: center; visibility: hidden;">
+            <img src="cringe.gif" id="cringe" style="text-align: center; display: none;">
+            <img src="good.gif" id ="good" style="text-align: center; display: none;;">
         </div>
         
     </body>
@@ -25,8 +25,8 @@
         ]
 
         async function checkSwaps() {
-            document.getElementById("good").style.visibility="hidden"
-            document.getElementById("cringe").style.visibility="hidden"
+            document.getElementById("good").style.display="none"
+            document.getElementById("cringe").style.display="none"
             let totalSwaps = 0;
             let address = document.getElementById("address").value;
             let headers = new Headers();
@@ -53,9 +53,9 @@
                 }
                 await alert(`Всего свапов: ${totalSwaps}`)
                 if (totalSwaps > 5) {
-                    document.getElementById("good").style.visibility="visible"
+                    document.getElementById("good").style.display="block"
                 } else {
-                    document.getElementById("cringe").style.visibility="visible"
+                    document.getElementById("cringe").style.display="block"
                 }
             }
         }
