@@ -32,8 +32,8 @@
                     fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
-                    .then(response = resp.json())
-                    .then(console.log(response))
+                    .then((data) => {let response = data})
+                    console.log(response)
                     response.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
