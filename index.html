@@ -28,7 +28,7 @@
                 alert("Долбаеб, введи адрес")
             } else {
                 for (let i = 0; i <= 4; i++) {
-                    fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((res) => {
                         return res.json()
                     })
@@ -41,7 +41,7 @@
                     })
                     
                 }
-                alert(`Всего свапов: ${totalSwaps}`)
+                await alert(`Всего свапов: ${totalSwaps}`)
             }
         }
     </script>
