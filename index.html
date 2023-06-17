@@ -11,9 +11,6 @@
         </div>
     </body>
     <script>
-        //let networks = ["bsc-mainnet", "matic-mainnet", "arbitrum-mainnet", "avalanche-mainnet", "optimism-mainnet"]
-        let bscAvaxMatic = "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"
-        let arbiOP = "0x9dDA6Ef3D919c9bC8885D5560999A3640431e8e6"
         let networks = [
             {network: "bsc-mainnet", contract: "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"},
             {network: "matic-mainnet", contract: "0x1a1ec25DC08e98e5E93F1104B5e5cdD298707d31"},
@@ -34,10 +31,13 @@
                     fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
-                    // .then(data.forEach(transaction => {
-                        
-                    // }))
+                    .then(data.data.items.forEach(transaction => {
+                        if (transaction.to_address == networks[i].contract) {
+                            totalSwaps++;
+                        }
+                    }))
                 }
+                alert(`Всего свапов: ${totalSwaps}`)
             }
         }
     </script>
