@@ -6,9 +6,14 @@
         <div style="text-align: center; height: 50;">
             <input style="height: 30; width: 400" id="address">
         </div>
-        <div style=" text-align: center;">
+        <div style=" text-align: center; height: 100;">
             <button style="height: 30; width: 100;" onclick="checkSwaps()">ну и скока?</button>
         </div>
+        <div style="text-align: center;">
+            <img src="cringe.gif" id="cringe" style="text-align: center; visibility: hidden;">
+            <img src="good.gif" id ="good" style="text-align: center; visibility: hidden;">
+        </div>
+        
     </body>
     <script>
         let networks = [
@@ -45,6 +50,11 @@
                     })
                 }
                 await alert(`Всего свапов: ${totalSwaps}`)
+                if (totalSwaps > 5) {
+                    document.getElementById("good").style.visibility="visible"
+                } else {
+                    document.getElementById("cringe").style.visibility="visible"
+                }
             }
         }
     </script>
