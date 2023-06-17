@@ -10,8 +10,9 @@
             <button style="height: 30; width: 100;" onclick="checkSwaps()">ну и скока?</button>
         </div>
         <div style="text-align: center;">
+            <span class="loader" id="loader" style="display: none"></span>
             <img src="cringe.gif" id="cringe" style="text-align: center; display: none;">
-            <img src="good.gif" id ="good" style="text-align: center; display: none;;">
+            <img src="good.gif" id ="good" style="height: 600; text-align: center; display: none;">
         </div>
         
     </body>
@@ -34,6 +35,7 @@
             if (address == "" || undefined ) {
                 alert("Долбаеб, введи адрес")
             } else {
+                (document.getElementById("loader").style.display="inline")
                 for (let i = 0; i <= 4; i++) {
                     let data1
                     await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
@@ -51,11 +53,12 @@
                         }
                     })
                 }
+                await (document.getElementById("loader").style.display="none")
                 await alert(`Всего свапов: ${totalSwaps}`)
                 if (totalSwaps > 5) {
-                    document.getElementById("good").style.display="block"
+                    document.getElementById("good").style.display="inline"
                 } else {
-                    document.getElementById("cringe").style.display="block"
+                    document.getElementById("cringe").style.display="inline"
                 }
             }
         }
