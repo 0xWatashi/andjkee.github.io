@@ -33,13 +33,13 @@
                         return res.json()
                     })
                     .then((data) => {
-                        console.log(data)
-                    })
-                    await transactions.data.items.forEach(transaction => {
+                        data.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
                         }
                     })
+                    })
+                    
                 }
                 alert(`Всего свапов: ${totalSwaps}`)
             }
