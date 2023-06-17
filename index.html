@@ -21,6 +21,7 @@
 
         async function checkSwaps() {
             let totalSwaps = 0;
+            let response
             let address = document.getElementById("address").value;
             let headers = new Headers();
             headers.set('Authorization', "Bearer cqt_rQJBM6C7TmcMmYWFxXjrRfHyfytV")
@@ -31,8 +32,8 @@
                     fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
                     .then((resp) => resp.json())
                     .then((data) => console.log(data))
-                    response = resp.json()
-                    console.log(response)
+                    .then(response = resp.json())
+                    .then(console.log(response))
                     response.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
