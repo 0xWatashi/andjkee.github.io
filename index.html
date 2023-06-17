@@ -34,11 +34,11 @@
                     .then((data) => console.log(data))
                     .then(response = resp.json())
                     .then(console.log(response))
-                    response.data.items.forEach(transaction => {
+                    .then(response.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
                         }
-                    })
+                    }))
                 }
                 alert(`Всего свапов: ${totalSwaps}`)
             }
