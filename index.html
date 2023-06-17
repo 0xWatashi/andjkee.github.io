@@ -11,7 +11,7 @@
             <button style="height: 30; width: 100;" onclick="checkSwaps()">ну и скока?</button>
         </div>
         <div style="text-align: center;">
-            <span class="loader" id="loader" style="display: inline; height: 100; width: 100"></span>
+            <span class="loader" id="loader" style="display: none; height: 100; width: 100"></span>
             <img src="cringe.gif" id="cringe" style="text-align: center; display: none;">
             <img src="good.gif" id ="good" style="height: 600; text-align: center; display: none;">
         </div>
@@ -36,7 +36,7 @@
             if (address == "" || undefined ) {
                 alert("Долбаеб, введи адрес")
             } else {
-                //(document.getElementById("loader").style.display="inline")
+                (document.getElementById("loader").style.display="inline")
                 for (let i = 0; i <= 4; i++) {
                     let data1
                     await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
