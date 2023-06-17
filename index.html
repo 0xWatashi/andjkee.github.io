@@ -29,16 +29,13 @@
                 alert("Долбаеб, введи адрес")
             } else {
                 for (let i = 0; i <= 4; i++) {
-                    await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers}) 
-                    .then((resp) => resp.json())
-                    .then((data) => console.log(data))
-                    .then(response = resp.json())
-                    .then(console.log(response))
-                    .then(response.data.items.forEach(transaction => {
+                    await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    let transactions = await response.json()
+                    await transactions.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
                         }
-                    }))
+                    })
                 }
                 alert(`Всего свапов: ${totalSwaps}`)
             }
