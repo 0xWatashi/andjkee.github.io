@@ -29,8 +29,8 @@
                 alert("Долбаеб, введи адрес")
             } else {
                 for (let i = 0; i <= 4; i++) {
-                    await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
-                    let transactions = await response.json()
+                    let response = await fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    let transactions = response.json()
                     await transactions.data.items.forEach(transaction => {
                         if (transaction.to_address == networks[i].contract) {
                             totalSwaps++;
