@@ -29,6 +29,9 @@
             } else {
                 for (let i = 0; i <= 4; i++) {
                     fetch(`https://api.covalenthq.com/v1/${networks[i].network}/address/${address}/transactions_v3/`, {method: 'GET', headers: headers})
+                    .then((res) => {
+                        return res.json()
+                    })
                     .then((data) => {
                         console.log(data)
                     })
