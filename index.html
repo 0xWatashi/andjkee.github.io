@@ -35,8 +35,11 @@
                     })
                     .then((data) => {
                         data.data.items.forEach(transaction => {
+                        console.log(transaction.to_address)
                         if (transaction.to_address == networks[i].contract) {
+                            console.log(networks[i].contract)
                             totalSwaps++;
+                            console.log(totalSwaps)
                         }
                     })
                     })
